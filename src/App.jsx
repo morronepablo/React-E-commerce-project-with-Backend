@@ -5,6 +5,8 @@ import Hero from "./components/hero/Hero";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Main from "./components/main/Main";
+import Footer from "./components/footer/Footer";
+import ScrollToTop from "./components/scroll/ScrollToTop";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -28,9 +30,13 @@ function App() {
             theme.palette.bg.main
           }
         >
-          {/* <Hero /> */}
+          <Hero />
           <Main />
         </Box>
+
+        <Footer />
+
+        <ScrollToTop />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
