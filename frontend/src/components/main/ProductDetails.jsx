@@ -13,7 +13,7 @@ const ProductDetails = () => {
       }}
     >
       <Box sx={{ display: "flex" }}>
-        <img width={300} src="src/images/1.png" alt="" />
+        <img width={300} src="src/images/1.jpg" alt="" />
       </Box>
 
       <Box sx={{ textAlign: { xs: "center", sm: "left" } }}>
@@ -32,7 +32,7 @@ const ProductDetails = () => {
           gap={1}
           my={2}
         >
-          {["src/images/1.png", "src/images/2.png"].map((item) => {
+          {["src/images/1.jpg", "src/images/2.jpg"].map((item) => {
             return (
               <img
                 style={{ borderRadius: 3 }}
