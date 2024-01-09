@@ -3,6 +3,8 @@ import {
   Box,
   Button,
   Container,
+  Dialog,
+  IconButton,
   Rating,
   Stack,
   Typography,
@@ -15,6 +17,8 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import { Close } from "@mui/icons-material";
+import ProductDetails from "./ProductDetails";
 
 const Main = () => {
   const [alignment, setAlignment] = useState("left");
@@ -24,6 +28,16 @@ const Main = () => {
   };
 
   const theme = useTheme();
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Container sx={{ py: 9 }}>
@@ -82,7 +96,6 @@ const Main = () => {
           </ToggleButton>
         </ToggleButtonGroup>
       </Stack>
-
       <Stack
         direction={"row"}
         flexWrap={"wrap"}
@@ -130,7 +143,11 @@ const Main = () => {
               </CardContent>
 
               <CardActions sx={{ justifyContent: "space-between" }}>
-                <Button sx={{ textTransform: "capitalize" }} size="large">
+                <Button
+                  onClick={handleClickOpen}
+                  sx={{ textTransform: "capitalize" }}
+                  size="large"
+                >
                   <AddShoppingCartOutlinedIcon
                     sx={{ mr: 1 }}
                     fontSize="small"
@@ -143,6 +160,29 @@ const Main = () => {
           );
         })}
       </Stack>
+
+      <Dialog
+        sx={{ ".MuiPaper-root": { minWidth: { xs: "100%", md: 800 } } }}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <IconButton
+          sx={{
+            ":hover": { color: "red", rotate: "180deg" },
+            transition: "0.3s",
+            position: "absolute",
+            top: 0,
+            right: 10,
+          }}
+          onClick={handleClose}
+        >
+          <Close />
+        </IconButton>
+
+        <ProductDetails />
+      </Dialog>
     </Container>
   );
 };
